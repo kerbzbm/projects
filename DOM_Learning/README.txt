@@ -1,0 +1,1 @@
+This folder will store projects that involve learning the DOM.
