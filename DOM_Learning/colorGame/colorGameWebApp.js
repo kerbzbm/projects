@@ -8,6 +8,7 @@ let h1 = document.querySelector("h1");
 let resetButton = document.querySelector("#reset")
 let easyBtn = document.querySelector("#easyBtn");
 let hardBtn = document.querySelector("#hardBtn");
+let flashClass = 'flash';
 
 colorDisplay.textContent = pickedColor;
 
@@ -41,6 +42,14 @@ hardBtn.addEventListener("click", function(){
 });
 
 resetButton.addEventListener("click", function(){
+    resetButton.classList.add(flashClass);
+})
+
+resetButton.addEventListener('animationend',function() {
+    this.classList.remove(flashClass);
+  });
+
+resetButton.addEventListener("click", function(){
     //generate all new colors
     colors = generateRandomColors(numSquares);
     //pick a new random color from array
@@ -51,7 +60,7 @@ resetButton.addEventListener("click", function(){
     for (var i = 0; i < squares.length; i++){
         squares[i].style.backgroundColor = colors[i];
     }
-    h1.style.backgroundColor = "#232323"
+    h1.style.backgroundColor = "#66b0c4"
 });
 
 for (var i = 0; i < squares.length; i++){
@@ -110,3 +119,4 @@ function randomColor() {
     let b = Math.floor(Math.random() * 256);
     return "rgb(" + r + ", " + g + ", " + b + ")";
 };
+
